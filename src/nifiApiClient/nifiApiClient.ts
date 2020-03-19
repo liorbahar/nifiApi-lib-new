@@ -5,16 +5,10 @@ import { ProcessGroupHandler } from "../apis/processGroupsHandler/prosessGroupHa
 import { INifiApiConnection } from "../nifiRequestSedner/nonSecure/INifiApiConnection";
 
 
-interface Handlers {
-    processGroup? : IProcessGroupsHandler;
-}
-
-
 export class NifiApiClient {
     private _processGroup : IProcessGroupsHandler;
     private nifi_conn : INifiApiConnection;
     constructor(nifi_conn : INifiApiConnection) {
-        // check if all handlers is null
         this.nifi_conn = nifi_conn;
     }
 
