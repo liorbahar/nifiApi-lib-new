@@ -1,10 +1,10 @@
 import { INifiApiSecureConnection } from "../nifiRequestSedner/secure/INifiApiSecureConnection";
+import { NifiApiClient } from "./nifiApiClient";
 
-export class NifiApiSecureClient {
-    private nifi_conn : INifiApiSecureConnection;
+export class NifiApiSecureClient extends NifiApiClient{
     constructor(nifi_conn : INifiApiSecureConnection) {
-        // check if all handlers is null
-        this.nifi_conn = nifi_conn;
+        super(nifi_conn);
+        
     }
 }
 
