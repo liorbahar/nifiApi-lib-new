@@ -1,7 +1,7 @@
 import { INifiApiConnection } from "./INifiApiConnection";
 import { Utils } from "../../../utils/utils";
 var rp = require('request-promise');
-export class NifiApiConnection implements INifiApiConnection{
+export class   NifiApiConnection implements INifiApiConnection{
     private _url : string;
     private _dafulatHeaders : Object;
     constructor(host : string){
@@ -19,7 +19,7 @@ export class NifiApiConnection implements INifiApiConnection{
 
     
     get url(){
-        return this.url;
+        return this._url;
     }
 
     get headers(){
