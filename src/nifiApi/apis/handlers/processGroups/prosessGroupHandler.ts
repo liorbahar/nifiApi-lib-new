@@ -15,7 +15,7 @@ export class ProcessGroupHandler implements IProcessGroupsHandler {
     }
     public async getProcessGroupByName(fatherId,name) : Promise<ProcessGroupType[]>{ 
         let allPgs : ProcessGroupType[] = await this.getAllProcessGroups(fatherId);
-        return allPgs.filter((pg: ProcessGroupType) => {pg.component.name === name})
+        return allPgs.filter(pg  => pg.component.name === name);
     }
     public async getAllProcessGroups(fatherId) : Promise<ProcessGroupType[]>{
         return await this.httpRequestHandler.get(`${this.route}/${fatherId}/process-groups`) as ProcessGroupType[];

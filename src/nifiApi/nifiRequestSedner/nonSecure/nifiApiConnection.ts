@@ -2,20 +2,34 @@ import { INifiApiConnection } from "./INifiApiConnection";
 import { Utils } from "../../../utils/utils";
 var rp = require('request-promise');
 export class NifiApiConnection implements INifiApiConnection{
-    private host : string;
-    private dafulatHeaders : Object;
+    private _url : string;
+    private _dafulatHeaders : Object;
     constructor(host : string){
-        this.host = host;
+        this._url = this.validateUrl(host);
     }
 
-    getHost(){
-        return this.host;
+    private validateUrl(url : string) : string{
+        let newUrl = url;
+        if (!url.endsWith('/nifi-api')){
+            newUrl += "/nifi-api"
+        }
+
+        return newUrl;
+    }
+
+    
+    get url(){
+        return this.url;
+    }
+
+    get headers(){
+        return this._dafulatHeaders;
     }
 
 
     setHeaders(key , value){
-        if (!this.dafulatHeaders.hasOwnProperty(key)){
-            this.dafulatHeaders[key] = value;
+        if (!this._dafulatHeaders.hasOwnProperty(key)){
+            this._dafulatHeaders[key] = value;
         }
         return this;
     }
@@ -40,7 +54,7 @@ export class NifiApiConnection implements INifiApiConnection{
     { 
         let opt : object = {
             method:method,
-            uri : this.host + route,
+            uri : this.url + route,
             resolveWithFullResponse: true,
             json : true
         };
@@ -54,9 +68,9 @@ export class NifiApiConnection implements INifiApiConnection{
             opt['headers'] = headers;
         }
 
-        if (!Utils.isNullOrUndefinded(this.dafulatHeaders))
+        if (!Utils.isNullOrUndefinded(this._dafulatHeaders))
         {
-            opt['headers'] = {...opt['headers'],...this.dafulatHeaders}
+            opt['headers'] = {...opt['headers'],...this._dafulatHeaders}
         }
 
         return opt;

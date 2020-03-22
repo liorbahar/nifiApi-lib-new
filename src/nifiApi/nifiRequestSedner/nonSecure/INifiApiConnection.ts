@@ -1,6 +1,5 @@
 export interface INifiApiConnection{
-    getHost();
-
+    
     get(route:string , headers? : object)
 
     post(route : string ,body : object, headers? : object)
