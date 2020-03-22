@@ -1,7 +1,7 @@
 
-import { IProcessGroupsHandler } from "../apis/processGroupsHandler/IprocessGroupsHandler";
-import { Utils } from "../utils/utils";
-import { ProcessGroupHandler } from "../apis/processGroupsHandler/prosessGroupHandler";
+import { IProcessGroupsHandler } from "../apis/handlers/processGroups/IprocessGroupsHandler";
+import { Utils } from "../../utils/utils";
+import { ProcessGroupHandler } from "../apis/handlers/processGroups/prosessGroupHandler";
 import { INifiApiConnection } from "../nifiRequestSedner/nonSecure/INifiApiConnection";
 
 

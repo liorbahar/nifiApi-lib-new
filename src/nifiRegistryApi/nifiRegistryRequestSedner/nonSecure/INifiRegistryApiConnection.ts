@@ -1,4 +1,4 @@
-export interface INifiApiConnection{
+export interface INifiRegistryApiConnection{
     getHost();
 
      get(route:string , headers? : object)

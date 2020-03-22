@@ -1,5 +1,5 @@
 import { INifiApiConnection } from "./INifiApiConnection";
-import { Utils } from "../../utils/utils";
+import { Utils } from "../../../utils/utils";
 var rp = require('request-promise');
 export class NifiApiConnection implements INifiApiConnection{
     private host : string;
