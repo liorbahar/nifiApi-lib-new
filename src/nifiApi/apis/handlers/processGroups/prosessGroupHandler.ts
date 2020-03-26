@@ -5,12 +5,13 @@ import { ProcessGroupType } from "../../models/types/processGroup/processGroupTy
 import { Utils } from "../../../../utils/utils";
 import { NifiApiConnection } from "../../../nifiRequestSedner/nonSecure/nifiApiConnection";
 import { ProcessorType } from "../../models/types/processor/processorType";
+import { IHttpNifiRequestHandler } from "../../../nifiRequestSedner/genericHttpRequestHandler/IhttpNifiRequestHandler";
 
 
 export class ProcessGroupHandler implements IProcessGroupsHandler {
-    private httpRequestHandler :INifiApiConnection;
+    private httpRequestHandler :IHttpNifiRequestHandler;
     route = "/process-groups";
-    constructor(httpRequestHandler : INifiApiConnection){
+    constructor(httpRequestHandler : IHttpNifiRequestHandler){
         this.httpRequestHandler = httpRequestHandler;
     }
     public async getProcessGroupByName(fatherId,name) : Promise<ProcessGroupType[]>{ 
@@ -65,5 +66,3 @@ export class ProcessGroupHandler implements IProcessGroupsHandler {
 }
 
 
-let pgHandler = new ProcessGroupHandler(new NifiApiConnection('http://localhost:9999/nifi-api'));
-pgHandler.getBreadCrumb('036780d5-0171-1000-45e8-e381eea47919');

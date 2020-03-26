@@ -1,14 +1,27 @@
 import { INifiApiSecureConnection } from "./INifiApiSecureConnection";
 import { NifiApiConnection } from "../nonSecure/nifiApiConnection";
+import { NifiAccessHandler } from "../../apis/handlers/access/accessHandler";
+import { constructor } from "path";
+import { HttpNifiRequestHandler } from "../genericHttpRequestHandler/httpNifiRequestHandler";
+import { url } from "inspector";
 
 
 export class NifiApiSecureConnection extends NifiApiConnection implements INifiApiSecureConnection{    
-    constructor(host : string , username , password){
-        super(host);
-        super.setHeaders('Authonivation', `Bearer ${this.login(username , password)}`);
-    } 
+    private accessHandler : NifiAccessHandler;
+    private authHeader : string;
+    constructor(url : string , username , password){
+        super(url);
+        this.accessHandler = new NifiAccessHandler(new HttpNifiRequestHandler(new NifiApiConnection(this.url)));
+        this.authHeader = `Brearer ${this.accessHandler.createAccessToken(username,password)}}`
 
-    private login(username ,password) : string{
-        return '';
+    } 
+    public async sendRequest(options: object): Promise<object> {
+        options['insecure'] = true;
+        options['rejectUnauthorized'] = false;
+        if (!options['headers']) {
+            options['headers'] = {}
+        }
+        options['headers']['Authorization'] = this.authHeader;
+        return await super.sendRequest(options);
     }
 }
