@@ -1,8 +1,9 @@
-import { INifiApiSecureConnection } from "../nifiRequestSedner/secure/INifiApiSecureConnection";
+import { INifiAccessHandler } from "../../apis/handlers/access/InifiAcessHandler";
 import { NifiApiClient } from "./nifiApiClient";
-import { INifiAccessHandler } from "../apis/handlers/access/INifiAcessHandler";
-import { Utils } from "../../utils/utils";
-import { NifiAccessHandler } from "../apis/handlers/access/accessHandler";
+import { INifiApiSecureConnection } from "../../nifiRequestSedner/secure/INifiApiSecureConnection";
+import { Utils } from "../../../utils/utils";
+import { NifiAccessHandler } from "../../apis/handlers/access/accessHandler";
+
 
 export class NifiApiSecureClient extends NifiApiClient{
     private _accessHandler : INifiAccessHandler ;
@@ -10,6 +11,7 @@ export class NifiApiSecureClient extends NifiApiClient{
         super(nifi_conn);
         
     }
+    
     setAccessHandler(acessHandler : INifiAccessHandler){
         this._accessHandler = acessHandler;
     }
