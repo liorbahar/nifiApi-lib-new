@@ -1,6 +1,6 @@
 import { IProcessGroupsHandler } from "../../apis/handlers/processGroups/IprocessGroupsHandler";
 import { IHttpNifiRequestHandler } from "../../nifiRequestSedner/genericHttpRequestHandler/IhttpNifiRequestHandler";
-import { ITemplateApiHandler } from "../../apis/handlers/templates/ItemplateApiHandler";
+import { ITemplateHandler } from "../../apis/handlers/templates/ItemplateHandler";
 
 export interface INifiApiClient {
     requestSender : IHttpNifiRequestHandler;
@@ -9,7 +9,7 @@ export interface INifiApiClient {
     
     processGroup  : IProcessGroupsHandler ;
     
-    setTemplateApiHandler(templateApiHandler : ITemplateApiHandler);
+    setTemplateApiHandler(templateApiHandler : ITemplateHandler);
 
-    template  : ITemplateApiHandler;
+    template  : ITemplateHandler;
 }

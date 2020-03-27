@@ -1,12 +1,13 @@
 import { IProcessGroupsHandler } from "../../apis/handlers/processGroups/IprocessGroupsHandler";import { IHttpNifiRequestHandler } from "../../nifiRequestSedner/genericHttpRequestHandler/IhttpNifiRequestHandler";import { INifiApiConnection } from "../../nifiRequestSedner/nonSecure/INifiApiConnection";import { HttpNifiRequestHandler } from "../../nifiRequestSedner/genericHttpRequestHandler/httpNifiRequestHandler";import { Utils } from "../../../utils/utils";import { ProcessGroupHandler } from "../../apis/handlers/processGroups/prosessGroupHandler";
-import { ITemplateApiHandler } from "../../apis/handlers/templates/ItemplateApiHandler";
-import { TemplateApiHandler } from "../../apis/handlers/templates/templateApiHandler";
+
 import { INifiApiClient } from "./InifiApiClient";
+import { ITemplateHandler } from "../../apis/handlers/templates/ItemplateHandler";
+import { TemplateHandler } from "../../apis/handlers/templates/templateHandler";
 
 
 export class NifiApiClient implements INifiApiClient {
     private _processGroupHandler : IProcessGroupsHandler;
-    private _templateHandler : ITemplateApiHandler;
+    private _templateHandler : ITemplateHandler;
     private _requestSender : IHttpNifiRequestHandler; 
     constructor(nifi_conn : INifiApiConnection) {
         this._requestSender = new HttpNifiRequestHandler(nifi_conn);
@@ -27,13 +28,13 @@ export class NifiApiClient implements INifiApiClient {
         return this._processGroupHandler;
     }
 
-    setTemplateApiHandler(templateApiHandler : ITemplateApiHandler){
+    setTemplateApiHandler(templateApiHandler : ITemplateHandler){
         this._templateHandler = templateApiHandler;
     }
 
-    get template() : ITemplateApiHandler {
+    get template() : ITemplateHandler {
         if (Utils.isNullOrUndefinded(this._templateHandler)){
-            this._templateHandler = new TemplateApiHandler(this.requestSender);
+            this._templateHandler = new TemplateHandler(this.requestSender);
         }
         return this._templateHandler;
     }
