@@ -2,6 +2,7 @@
 import { IHttpNifiRequestHandler } from "../../../nifiRequestSedner/genericHttpRequestHandler/IhttpNifiRequestHandler";
 import { ITemplateHandler } from "./ItemplateHandler";
 
+// TODO : create template model
  export class TemplateHandler implements ITemplateHandler{
     private httpRequestHandler :IHttpNifiRequestHandler;
     route = "/flows";
@@ -20,12 +21,20 @@ import { ITemplateHandler } from "./ItemplateHandler";
         return allTemplates.find(template => template['name'] == name);
     }
 
-
-    public async createTemplate(){
-
+    public async createTemplate(pgId , name , descriptions : string= ''){
+        let snipetId =''; //create_snippet(pgId);
+        
+        let body = {
+            name:name,
+            description:descriptions,
+            snippetId:snipetId
+        };
+        let parentId = '';
+        return await this.httpRequestHandler.post(`process-groups/${parentId}/templates`,body);
     }
 
-    public async deleteTemplate(){
+    public async deleteTemplate(templateId){
+        return await this.httpRequestHandler.delete(`${this.route}/templates/${templateId}`);
         
     }
 
