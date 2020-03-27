@@ -16,5 +16,9 @@ export interface IProcessGroupsHandler {
 
     getProcessors(pgId) : Promise<ProcessorType[]>;
 
+    importFlowFromRegistry(parentId,registryId , bucketId , flowId,version) : Promise<ProcessGroupType>;
+
+    getRootProcessGroup() : Promise<ProcessGroupType>;
+
     
 }

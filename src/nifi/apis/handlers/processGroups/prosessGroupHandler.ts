@@ -39,6 +39,10 @@ export class ProcessGroupHandler implements IProcessGroupsHandler {
         return await this.httpRequestHandler.get(`${this.route}/${pgId}`) as ProcessGroupType;
     }
 
+    public async getRootProcessGroup() : Promise<ProcessGroupType>{
+        return await this.getProcessGroup('root');
+    }
+
     public async createProcessGroup(fatherId,name,x,y) : Promise<ProcessGroupType>{
         let body = {
             "revision": {
@@ -55,12 +59,35 @@ export class ProcessGroupHandler implements IProcessGroupsHandler {
         return await this.httpRequestHandler.post(`${this.route}/${fatherId}/process-groups`,body) as ProcessGroupType;
     }
 
+    public async importFlowFromRegistry(parentId,registryId , bucketId , flowId,version) : Promise<ProcessGroupType>{
+        let body = {
+            revision:{
+                version:0
+            },
+            component:{                
+                version_control_information:{
+                    bucketId:bucketId,
+                    flowId:flowId,
+                    registryId:registryId,
+                    version:version
+                }
+            }
+        }
+
+        return await this.httpRequestHandler.post(`${this.route}/${parentId}/process-groups`,body) as ProcessGroupType;
+    }
+
     public async deleteProcessGroup(pgId) : Promise<ProcessGroupType>{
         return await this.httpRequestHandler.delete(`${this.route}/${pgId}`) as ProcessGroupType;
     }
 
     public async getProcessors(pgId) : Promise<ProcessorType[]>{
         return await this.httpRequestHandler.get(`${this.route}/${pgId}/processors`) as ProcessorType[];
+    }
+
+
+    public async getAllFlowInNifi(){
+        
     }
    
 }
