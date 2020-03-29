@@ -74,7 +74,7 @@ import { FlowIsRunningError } from "./src/nifi/apis/errors/nifi/FlowIsRunningErr
 import { ControllerServiceDoesNotExistsError } from "./src/nifi/apis/errors/nifi/ControllerServiceDoesNotExistsError";
 import { ProcessorDoesNotExistError } from "./src/nifi/apis/errors/nifi/ProcessorDoesNotExistError";
 import { UnknownNiFiAPIError } from "./src/nifi/apis/errors/nifi/UnknownNiFiAPIError";
-import { NifiApiSecureClient } from "./src/nifi/client/secure/nifiApiSecureClient";
+import { NifiApiSecureClient } from "./src/nifi/client/nifiApiSecureClient";
 import { NifiApiClient } from "./src/nifi/client/nifiApiClient";
 
 // clients

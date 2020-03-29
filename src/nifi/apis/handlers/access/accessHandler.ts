@@ -1,5 +1,3 @@
-import { INifiApiConnection } from "../../../nifiRequestSedner/nonSecure/INifiApiConnection";
-
 import { INifiAccessHandler } from "./INifiAcessHandler";
 import { IHttpRequestHandler } from "../../../../restRequestSender/interfaces/IhttpRequestHandler";
 

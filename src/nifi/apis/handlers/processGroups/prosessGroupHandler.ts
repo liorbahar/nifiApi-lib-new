@@ -1,9 +1,9 @@
 
 import { IProcessGroupsHandler } from "./IprocessGroupsHandler";
-import { INifiApiConnection } from "../../../nifiRequestSedner/nonSecure/INifiApiConnection";
+
 import { ProcessGroupType } from "../../models/types/processGroup/processGroupType";
 import { Utils } from "../../../../utils/utils";
-import { NifiApiConnection } from "../../../nifiRequestSedner/nonSecure/nifiApiConnection";
+
 import { ProcessorType } from "../../models/types/processor/processorType";
 import { IHttpRequestHandler } from "../../../../restRequestSender/interfaces/IhttpRequestHandler";
 

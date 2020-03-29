@@ -1,6 +1,5 @@
 
 import { IProcessorHandler } from "./IprocessorHandler";
-import { INifiApiConnection } from "../../../nifiRequestSedner/nonSecure/INifiApiConnection";
 import { ProcessorType } from "../../models/types/processor/processorType";
 import { IHttpRequestHandler } from "../../../../restRequestSender/interfaces/IhttpRequestHandler";
 

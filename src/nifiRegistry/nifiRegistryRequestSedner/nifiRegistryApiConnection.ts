@@ -1,6 +1,5 @@
 import { INifiRegistryApiConnection } from "./INifiRegistryApiConnection";
-import { Utils } from "../../../utils/utils";
-import { NifiRegistryAPIErrorFactory } from "../../apis/error/factory/NifiRegistryAPIErrorFactory";
+import { NifiRegistryAPIErrorFactory } from "../apis/error/factory/NifiRegistryAPIErrorFactory";
 var rp = require('request-promise');
 export class NifiRegistryApiConnection implements INifiRegistryApiConnection{
     private _url : string;

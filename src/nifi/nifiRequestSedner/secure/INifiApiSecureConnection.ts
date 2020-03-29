@@ -1,4 +1,5 @@
-import { INifiApiConnection } from "../nonSecure/INifiApiConnection";
+import { INifiApiConnection } from "../INifiApiConnection";
+
 
 export interface INifiApiSecureConnection extends  INifiApiConnection{
 }

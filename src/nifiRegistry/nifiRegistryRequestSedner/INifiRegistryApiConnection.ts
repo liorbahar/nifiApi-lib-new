@@ -1,4 +1,4 @@
-import { IHttpRequestSender } from "../../../restRequestSender/interfaces/IhttpRequestSender";
+import { IHttpRequestSender } from "../../restRequestSender/interfaces/IhttpRequestSender";
 
 export interface INifiRegistryApiConnection extends IHttpRequestSender{
 }

@@ -1,8 +1,8 @@
-import { NifiApiClient } from "../nifiApiClient";
-import { INifiAccessHandler } from "../../apis/handlers/access/InifiAcessHandler";
-import { IHttpRequestHandler } from "../../../restRequestSender/interfaces/IhttpRequestHandler";
-import { Utils } from "../../../utils/utils";
-import { NifiAccessHandler } from "../../apis/handlers/access/accessHandler";
+import { NifiApiClient } from "./nifiApiClient";
+import { INifiAccessHandler } from "../apis/handlers/access/InifiAcessHandler";
+import { IHttpRequestHandler } from "../../restRequestSender/interfaces/IhttpRequestHandler";
+import { Utils } from "../../utils/utils";
+import { NifiAccessHandler } from "../apis/handlers/access/accessHandler";
 
 
 
