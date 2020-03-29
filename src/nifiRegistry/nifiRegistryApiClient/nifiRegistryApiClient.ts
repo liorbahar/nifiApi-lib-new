@@ -1,18 +1,24 @@
 
 import { IBucketHandler } from "../apis/handlers/bucket/IbucketHandler";
 
-import { INifiRegistryApiConnection } from "../nifiRegistryRequestSedner/nonSecure/INifiRegistryApiConnection";
+
 import { Utils } from "../../utils/utils";
 import { BucketHandler } from "../apis/handlers/bucket/bucketHandler";
-import { NifiRegistryApiConnection } from "../nifiRegistryRequestSedner/nonSecure/nifiRegistryApiConnection";
+
+import { IHttpRequestHandler } from "../../restRequestSender/interfaces/IhttpRequestHandler";
+
 
 
 
 export class NifiRegistryApiClient {
     private _bucket : IBucketHandler;
-    private nifi_registry_conn : INifiRegistryApiConnection;
-    constructor(nifi_registry_conn : INifiRegistryApiConnection) {
-        this.nifi_registry_conn = nifi_registry_conn;
+    private _httpRequestSender : IHttpRequestHandler;
+    constructor(_httpRequestSender : IHttpRequestHandler) {
+        this._httpRequestSender = _httpRequestSender;
+    }
+
+    get requestSender() : IHttpRequestHandler{
+        return this._httpRequestSender;
     }
 
     setBucketHandler(bucketHandler : IBucketHandler){
@@ -21,7 +27,7 @@ export class NifiRegistryApiClient {
 
     get bucket() : IBucketHandler {
         if (Utils.isNullOrUndefinded(this._bucket)){
-            this._bucket = new BucketHandler(this.nifi_registry_conn);
+            this._bucket = new BucketHandler(this._httpRequestSender);
         }
         return this._bucket;
     }

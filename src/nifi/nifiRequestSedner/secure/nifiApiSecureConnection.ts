@@ -1,9 +1,10 @@
 import { INifiApiSecureConnection } from "./INifiApiSecureConnection";
-import { NifiApiConnection } from "../nonSecure/nifiApiConnection";
+
 import { NifiAccessHandler } from "../../apis/handlers/access/accessHandler";
 import { constructor } from "path";
-import { HttpNifiRequestHandler } from "../genericHttpRequestHandler/httpNifiRequestHandler";
 import { url } from "inspector";
+import { HttpRequestHandler } from "../../../restRequestSender/httpRequestHandler";
+import { NifiApiConnection } from "../nifiApiConnection";
 
 
 export class NifiApiSecureConnection extends NifiApiConnection implements INifiApiSecureConnection{    
@@ -11,7 +12,7 @@ export class NifiApiSecureConnection extends NifiApiConnection implements INifiA
     private authHeader : string;
     constructor(url : string , username , password){
         super(url);
-        this.accessHandler = new NifiAccessHandler(new HttpNifiRequestHandler(new NifiApiConnection(this.url)));
+        this.accessHandler = new NifiAccessHandler(new HttpRequestHandler(new NifiApiConnection(this.url)));
         this.authHeader = `Brearer ${this.accessHandler.createAccessToken(username,password)}}`
 
     } 

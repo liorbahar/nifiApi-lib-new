@@ -1,12 +1,13 @@
 
-import { IHttpNifiRequestHandler } from "../../../nifiRequestSedner/genericHttpRequestHandler/IhttpNifiRequestHandler";
+
 import { ITemplateHandler } from "./ItemplateHandler";
+import { IHttpRequestHandler } from "../../../../restRequestSender/interfaces/IhttpRequestHandler";
 
 // TODO : create template model
  export class TemplateHandler implements ITemplateHandler{
-    private httpRequestHandler :IHttpNifiRequestHandler;
+    private httpRequestHandler :IHttpRequestHandler;
     route = "/flows";
-    constructor(httpRequestHandler : IHttpNifiRequestHandler){
+    constructor(httpRequestHandler : IHttpRequestHandler){
         this.httpRequestHandler = httpRequestHandler;
     }
 

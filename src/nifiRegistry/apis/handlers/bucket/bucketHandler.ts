@@ -1,22 +1,31 @@
 
 import { IBucketHandler } from "./IbucketHandler";
-import { INifiRegistryApiConnection } from "../../../nifiRegistryRequestSedner/nonSecure/INifiRegistryApiConnection";
+import { Bucket } from "../../models/bucket";
+import { BucketType } from "../../models/types/bucketType";
+import { IHttpRequestHandler } from "../../../../restRequestSender/interfaces/IhttpRequestHandler";
 
 
 
 export class BucketHandler implements IBucketHandler {
-    private httpRequestHandler : INifiRegistryApiConnection;
-    constructor(httpRequestHandler : INifiRegistryApiConnection){
+    private httpRequestHandler : IHttpRequestHandler;
+    url = "/buckets";
+    constructor(httpRequestHandler : IHttpRequestHandler){
         this.httpRequestHandler = httpRequestHandler;
     }
     
-    createBucket(bucketName: any) {
-        throw new Error("Method not implemented.");
+    public async createBucket(bucket : Bucket) :  Promise<BucketType>{
+        return await this.httpRequestHandler.post(this.url,bucket) as BucketType;
     }
-    deleteBucket(bucketId: any) {
-        throw new Error("Method not implemented.");
+
+    public async deleteBucket(bucketId) : Promise<BucketType> {
+        return await this.httpRequestHandler.delete(`/buckets/${bucketId}`) as BucketType;
     }
-    getBucket(bucketId: any) {
-        throw new Error("Method not implemented.");
-    }    
+
+    public async getBucket(bucketId) : Promise<BucketType> {
+        return await this.httpRequestHandler.get(`/buckets/${bucketId}`) as BucketType;
+    }
+
 }
+
+ 
+

@@ -1,8 +1,11 @@
+import { Bucket } from "../../models/bucket";
+import { BucketType } from "../../models/types/bucketType";
+
 export interface IBucketHandler {
-    createBucket(bucketName);
+    createBucket(bucket : Bucket) :  Promise<BucketType>;
 
-    deleteBucket(bucketId);
+    deleteBucket(bucketId) : Promise<BucketType>;
 
-    getBucket(bucketId);
+    getBucket(bucketId) : Promise<BucketType>;
     
 }
